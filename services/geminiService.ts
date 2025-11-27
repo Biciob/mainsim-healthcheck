@@ -1,6 +1,7 @@
 import { GoogleGenAI, Type, Schema } from "@google/genai";
 import { HealthCheckInputs, HealthCheckReport } from "../types";
 
+// Use process.env.API_KEY as required
 const genAI = new GoogleGenAI({ apiKey: process.env.API_KEY });
 
 const responseSchema: Schema = {
