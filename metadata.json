@@ -1,5 +1,0 @@
-{
-  "name": "mainsim CMMS HealthCheck",
-  "description": "An automated audit tool for CMMS maintenance data, providing maturity scoring and operational recommendations.",
-  "requestFramePermissions": []
-}
