@@ -6,7 +6,7 @@ export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, '.', '');
   
   // Recupera l'API KEY: prova prima da loadEnv, poi direttamente da process.env (per Vercel)
-  const apiKey = env.API_KEY || process.env.API_KEY;
+  const apiKey = env.VITE_API_KEY || process.env.VITE_API_KEY;
 
   return {
     plugins: [react()],
