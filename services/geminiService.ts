@@ -1,9 +1,7 @@
 import { GoogleGenAI, Type, Schema } from "@google/genai";
 import { HealthCheckInputs, HealthCheckReport } from "../types";
 
-// Use process.env.API_KEY as required
-const genAI = new GoogleGenAI({ apiKey: process.env.API_KEY });
-
+// Schema definition remains static
 const responseSchema: Schema = {
   type: Type.OBJECT,
   properties: {
@@ -59,6 +57,13 @@ const responseSchema: Schema = {
 };
 
 export const generateHealthCheckReport = async (inputs: HealthCheckInputs): Promise<HealthCheckReport> => {
+  const apiKey = process.env.API_KEY;
+  if (!apiKey) {
+    throw new Error("API Key mancante. Verifica la configurazione dell'ambiente.");
+  }
+
+  // Initialize inside the function to avoid immediate crash on load if key is missing
+  const genAI = new GoogleGenAI({ apiKey });
   const model = "gemini-2.5-flash";
   
   const prompt = `

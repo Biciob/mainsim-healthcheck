@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import { createRoot } from 'react-dom/client';
-import { Activity, ClipboardList, Database, Timer, HardDrive, BarChart3, Loader2 } from 'lucide-react';
+import { Activity, ClipboardList, Database, Timer, HardDrive, BarChart3 } from 'lucide-react';
 import { HealthCheckInputs, HealthCheckReport } from './types';
 import { InputSection } from './components/InputSection';
 import { InputField } from './components/InputField';
@@ -268,14 +267,4 @@ const App: React.FC = () => {
   );
 };
 
-const rootElement = document.getElementById('root');
-if (!rootElement) {
-  throw new Error("Could not find root element to mount to");
-}
-
-const root = createRoot(rootElement);
-root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-);
+export default App;
