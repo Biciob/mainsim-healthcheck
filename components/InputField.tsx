@@ -2,13 +2,13 @@ import React from 'react';
 
 interface InputFieldProps {
   label: string;
-  description?: string; // Nuova prop per la spiegazione
+  description?: string;
   name: string;
   value: number | string;
   onChange: (name: string, value: number | string) => void;
   type?: "number" | "text" | "select";
   options?: string[];
-  placeholder?: string; // Ora usato per esempi (es. "45")
+  placeholder?: string;
   unit?: string;
 }
 
@@ -24,13 +24,13 @@ export const InputField: React.FC<InputFieldProps> = ({
   unit 
 }) => {
   return (
-    <div className="flex flex-col mb-2">
-      <label className="text-sm font-bold text-[#3f4142] mb-0.5">
+    <div className="form-group">
+      <label className="form-label">
         {label}
       </label>
       
       {description && (
-        <p className="text-xs text-gray-500 mb-2 font-light">
+        <p className="form-description">
           {description}
         </p>
       )}
@@ -39,7 +39,7 @@ export const InputField: React.FC<InputFieldProps> = ({
         <select
           value={value}
           onChange={(e) => onChange(name, e.target.value)}
-          className="bg-[#f7f7f7] border border-gray-300 text-[#3f4142] text-sm rounded-lg focus:ring-[#3f4142] focus:border-[#3f4142] block w-full p-2.5 transition-colors hover:bg-white"
+          className="form-select"
         >
           <option value="">Seleziona...</option>
           {options?.map((opt) => (
@@ -47,17 +47,17 @@ export const InputField: React.FC<InputFieldProps> = ({
           ))}
         </select>
       ) : (
-        <div className="relative">
+        <div className="input-wrapper">
           <input
             type={type}
             value={value}
             onChange={(e) => onChange(name, type === "number" ? (e.target.value === "" ? "" : Number(e.target.value)) : e.target.value)}
-            className="bg-[#f7f7f7] border border-gray-300 text-[#3f4142] text-sm rounded-lg focus:ring-[#3f4142] focus:border-[#3f4142] block w-full p-2.5 placeholder-gray-400 transition-colors hover:bg-white"
+            className="form-input"
             placeholder={placeholder}
           />
           {unit && (
-            <div className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
-              <span className="text-gray-500 text-sm">{unit}</span>
+            <div className="input-unit">
+              <span>{unit}</span>
             </div>
           )}
         </div>
