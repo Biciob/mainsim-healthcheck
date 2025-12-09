@@ -57,12 +57,12 @@ const responseSchema: Schema = {
 };
 
 export const generateHealthCheckReport = async (inputs: HealthCheckInputs): Promise<HealthCheckReport> => {
-  const ai = new GoogleGenAI({ apiKey: import.meta.env.VITE_API_KEY });
+  const apiKey = import.meta.env.VITE_API_KEY;
+  
   if (!apiKey) {
     throw new Error("API Key mancante. Verifica la configurazione dell'ambiente.");
   }
-
-  // Initialize inside the function to avoid immediate crash on load if key is missing
+  
   const genAI = new GoogleGenAI({ apiKey });
   const model = "gemini-2.5-flash";
   
