@@ -57,7 +57,7 @@ const responseSchema: Schema = {
 };
 
 export const generateHealthCheckReport = async (inputs: HealthCheckInputs): Promise<HealthCheckReport> => {
-  const apiKey = process.env.API_KEY;
+  const ai = new GoogleGenAI({ apiKey: import.meta.env.VITE_API_KEY });
   if (!apiKey) {
     throw new Error("API Key mancante. Verifica la configurazione dell'ambiente.");
   }
